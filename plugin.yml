@@ -1,0 +1,16 @@
+name: SimpleLogin
+main: SimpleLogin.Main
+version: "1.0.0"
+author: maru
+api: ["1.0.0"]
+
+permissions:
+ simplelogin.*:
+  default: true
+  children:
+   simplelogin.commands.*:
+    children:
+     simplelogin.commands.login:
+     simplelogin.commands.register:
+     simplelogin.commands.manage:
+      default: OP

@@ -1,0 +1,40 @@
+m_version: 1
+
+default-language: "kor"
+
+kor-default-prefix: "[로그인]"
+
+kor-command-login: "로그인"
+kor-command-register: "가입"
+kor-command-manage: "계정관리"
+kor-command-manage-unregister: "탈퇴"
+kor-command-manage-change: "변경"
+kor-command-manage-subaccount: "부계정허용"
+
+kor-command-login-usage: "/로그인 <비밀번호>"
+kor-command-login-description: "로그인을 합니다."
+
+kor-command-register-usage: "/가입 <비밀번호>"
+kor-command-register-description: "가입을 합니다."
+
+kor-command-manage-usage: "/계정관리 <탈퇴>|<변경>|<부계정허용>"
+kor-command-manage-unregister-usage: "/계정관리 <탈퇴> <플레이어>"
+kor-command-manage-change-usage: "/계정관리 <변경> <플레이어> <비밀번호>"
+kor-command-manage-description: "유저의 계정을 관리합니다."
+
+
+kor-already-login: "당신은 로그인 되어있습니다."
+kor-already-register: "이미 가입되어 있습니다."
+kor-not-register: "가입되어 있지 않습니다."
+kor-not-correct-password: "비밀번호가 틀렸습니다. 비밀번호가 기억이 안나는 경우 관리자에게 문의해주세요."
+kor-to-login: "로그인 하시면 서버를 이용하실수 있습니다."
+kor-cant-find-player: "해당 유저는 서버에 가입한적이 없는 유저입니다."
+kor-already-have-account: "당신은 이미 %player%계정이 있습니다. 해당 아이디로 로그인해 주세요."
+
+kor-register-success: "성공적으로 가입했습니다."
+kor-login-success: "성공적으로 로그인했습니다."
+kor-change-password: "%player%의 비밀번호를 %password%로 변경했습니다."
+kor-unregister-player: "%player%를 탈퇴시켰습니다."
+kor-set-allow-subaccount: "부계정을 %bool%으로 변경했습니다."
+kor-must-in-game: "게임 내에서만 사용 가능합니다."
+kor-kick-subaccount: "당신은 %name% 으로 이미 가입했습니다. 해당 닉네임을 사용해주세요"

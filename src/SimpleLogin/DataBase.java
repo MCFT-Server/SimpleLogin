@@ -52,9 +52,11 @@ public class DataBase {
 					}
 				});
 	}
-	public void save(boolean async) {
-		(new Config(plugin.getDataFolder()+ "/accountDB.json", Config.JSON, accountDB)).save(async);
-		config.save(async);
+	public void save() {
+		Config accountDB = new Config(plugin.getDataFolder()+ "/accountDB.json", Config.JSON);
+		accountDB.setAll(this.accountDB);
+		accountDB.save();
+		config.save();
 	}
 	public void registerCommands() {
 		registerCommand(get("command-login"), get("command-login-description"), get("command-login-usage"), "simplelogin.commands.login");

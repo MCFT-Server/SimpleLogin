@@ -18,7 +18,7 @@ public class Main extends PluginBase{
 		this.getServer().getPluginManager().registerEvents(listener, this);
 	}
 	public void onDisable() {
-		dataBase.save(true);
+		dataBase.save();
 	}
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {

@@ -11,7 +11,6 @@ import cn.nukkit.event.block.BlockPlaceEvent;
 import cn.nukkit.event.block.DoorToggleEvent;
 import cn.nukkit.event.entity.EntityArmorChangeEvent;
 import cn.nukkit.event.inventory.CraftItemEvent;
-import cn.nukkit.event.inventory.InventoryOpenEvent;
 import cn.nukkit.event.player.PlayerChatEvent;
 import cn.nukkit.event.player.PlayerCommandPreprocessEvent;
 import cn.nukkit.event.player.PlayerDropItemEvent;
@@ -19,6 +18,7 @@ import cn.nukkit.event.player.PlayerInteractEvent;
 import cn.nukkit.event.player.PlayerItemConsumeEvent;
 import cn.nukkit.event.player.PlayerItemHeldEvent;
 import cn.nukkit.event.player.PlayerJoinEvent;
+import cn.nukkit.event.player.PlayerKickEvent;
 import cn.nukkit.event.player.PlayerLoginEvent;
 import cn.nukkit.event.player.PlayerMoveEvent;
 import cn.nukkit.event.player.PlayerQuitEvent;
@@ -112,7 +112,7 @@ class EventListener implements Listener{
 			}
 			if (getDataBase().get("command-manage-subaccount").equals(args[0].toLowerCase())) {
 				getManage().setAllowSubAccount(!getManage().isAllowSubAccount());
-				getDataBase().alert(sender, getDataBase().get("set-allow-subaccount").replaceAll("%bool%", (getManage().isAllowSubAccount()) ? "허용" : "비허용"));
+				getDataBase().alert(sender, getDataBase().get("set-allow-subaccount").replaceAll("%bool%", (getManage().isAllowSubAccount()) ? (getDataBase().messages.get("default-language") == "kor")?"허용":"allow" : (getDataBase().messages.get("default-language") == "kor")?"비허용":"disallow"));
 				return true;
 			}
 			getDataBase().alert(sender, getDataBase().get("command-manage-usage"));
@@ -150,14 +150,6 @@ class EventListener implements Listener{
 	public void onCraft(CraftItemEvent event) {
 		if (!getManage().isLogin(event.getPlayer())) {
 			event.setCancelled();
-		}
-	}
-	@EventHandler
-	public void onInventoryOpen(InventoryOpenEvent event) {
-		if (!getManage().isLogin(event.getPlayer())) {
-			event.setCancelled();
-		} else {
-			event.setCancelled(false);
 		}
 	}
 	@EventHandler
@@ -252,6 +244,15 @@ class EventListener implements Listener{
 		DataPacket packet = event.getPacket();
 		if (packet instanceof LoginPacket) {
 			getDataBase().clientId.put(event.getPlayer(), ((LoginPacket) packet).clientId);
+		}
+	}
+	@EventHandler
+	public void loginKick(PlayerKickEvent event) {
+		Player player = event.getPlayer();
+		if (event.getReason().equals("logged in from another location")) {
+			if (getManage().isLogin(player)) {
+				event.setCancelled();
+			}
 		}
 	}
 }

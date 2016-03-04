@@ -1,6 +1,41 @@
-m_version: 1
+m_version: 2
 
-default-language: "kor"
+default-language: "eng"
+
+eng-default-prefix: "[Login]"
+
+eng-command-login: "login"
+eng-command-register: "register"
+eng-command-manage: "accountmanage"
+eng-command-manage-unregister: "unregister"
+eng-command-manage-change: "change"
+eng-command-manage-subaccount: "allowsub"
+
+eng-command-login-usage: "/login <password>"
+eng-command-login-description: "Do login"
+
+eng-command-register-usage: "/register <password>"
+eng-command-register-description: "Do register"
+
+eng-command-manage-usage: "/accountmanage <unregister>|<change>|<allowsub>"
+eng-command-manage-unregister-usage: "/accountmanage <unregister> <player>"
+eng-command-manage-change-usage: "/accountmanage <change> <player> <password>"
+eng-command-manage-description: "Manage users account"
+
+eng-already-login: "You are already logged in."
+eng-already-register: "You are already registered"
+eng-not-register: "You are not registered"
+eng-not-correct-password: "It is incorrect password"
+eng-to-login: "When you log in, you can play in the server"
+eng-cant-find-player: "The user is never registered on this server"
+
+eng-register-success: "You are now registered"
+eng-login-success: "You are now logged in"
+eng-change-password: "The password for the %player% was changed to %password%."
+eng-unregister-player: "Unregistered %player%"
+eng-set-allow-subaccount: "%bool% subaccount"
+eng-must-in-game: "must in game"
+eng-kick-subaccount: "You already have an account: %name%"
 
 kor-default-prefix: "[로그인]"
 
@@ -29,7 +64,6 @@ kor-not-register: "가입되어 있지 않습니다."
 kor-not-correct-password: "비밀번호가 틀렸습니다. 비밀번호가 기억이 안나는 경우 관리자에게 문의해주세요."
 kor-to-login: "로그인 하시면 서버를 이용하실수 있습니다."
 kor-cant-find-player: "해당 유저는 서버에 가입한적이 없는 유저입니다."
-kor-already-have-account: "당신은 이미 %player%계정이 있습니다. 해당 아이디로 로그인해 주세요."
 
 kor-register-success: "성공적으로 가입했습니다."
 kor-login-success: "성공적으로 로그인했습니다."

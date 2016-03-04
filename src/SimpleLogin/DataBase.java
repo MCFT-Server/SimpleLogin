@@ -15,7 +15,7 @@ public class DataBase {
 	public Main plugin;
 	public Config messages, config;
 	public LinkedHashMap<String, Object> accountDB;
-	public final int m_version = 1;
+	public final int m_version = 2;
 	public HashMap<Player, Long> clientId;
 	
 	DataBase(Main plugin) {

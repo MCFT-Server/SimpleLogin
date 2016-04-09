@@ -1,6 +1,6 @@
 package SimpleLogin;
 
-import java.util.HashMap;
+import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -16,11 +16,9 @@ public class DataBase {
 	public Config messages, config;
 	public LinkedHashMap<String, Object> accountDB;
 	public final int m_version = 2;
-	public HashMap<Player, Long> clientId;
 	
 	DataBase(Main plugin) {
 		this.plugin = plugin;
-		clientId = new HashMap<Player, Long>();
 		
 		plugin.getDataFolder().mkdirs();
 		initMessage();
@@ -28,7 +26,21 @@ public class DataBase {
 		registerCommands();
 	}
 	public long getClientId(Player player) {
-		return clientId.get(player);
+		Class<? extends Player> reflect =  player.getClass();
+		Field var;
+		long clientId = 0;
+		try {
+			var = reflect.getDeclaredField("randomClientId");
+			var.setAccessible(true);
+			try {
+				clientId = var.getLong(player);
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		} catch (NoSuchFieldException | SecurityException e) {
+			e.printStackTrace();
+		}
+		return clientId;
 	}
 	public void initMessage() {
 		plugin.saveResource("messages.yml");

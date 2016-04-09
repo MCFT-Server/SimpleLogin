@@ -22,12 +22,14 @@ import cn.nukkit.event.player.PlayerKickEvent;
 import cn.nukkit.event.player.PlayerLoginEvent;
 import cn.nukkit.event.player.PlayerMoveEvent;
 import cn.nukkit.event.player.PlayerQuitEvent;
+import cn.nukkit.event.plugin.PluginDisableEvent;
 import cn.nukkit.event.server.DataPacketReceiveEvent;
 import cn.nukkit.network.protocol.DataPacket;
 import cn.nukkit.network.protocol.LoginPacket;
 
 class EventListener implements Listener{
 	private Main plugin;
+	
 	EventListener(Main plugin) {
 		this.plugin = plugin;
 	}
@@ -221,7 +223,11 @@ class EventListener implements Listener{
 			event.setCancelled();
 			return;
 		}
-		if (!getManage().isLogin(event.getPlayer())) {
+		if (!getManage().isLogin(player)) {
+			if (getDataBase().getLastLoginIp(player).equals(player.getAddress())) {
+				getManage().setLogin(player, true);
+				return;
+			}
 			getDataBase().alert(player, getDataBase().get("command-login-usage"));
 			getDataBase().alert(player, getDataBase().get("to-login"));
 			event.setCancelled();
@@ -237,13 +243,6 @@ class EventListener implements Listener{
 		if (subAccount != null) {
 			event.setKickMessage(getDataBase().get("kick-subaccount").replaceAll("%name%", subAccount));
 			event.setCancelled();
-		}
-	}
-	@EventHandler
-	public void onRecieve(DataPacketReceiveEvent event) {
-		DataPacket packet = event.getPacket();
-		if (packet instanceof LoginPacket) {
-			getDataBase().clientId.put(event.getPlayer(), ((LoginPacket) packet).clientId);
 		}
 	}
 	@EventHandler

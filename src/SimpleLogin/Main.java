@@ -24,7 +24,6 @@ public class Main extends PluginBase{
 		try {
 			return listener.onCommand(sender, command, label, args);
 		} catch (SecurityException | IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return true;

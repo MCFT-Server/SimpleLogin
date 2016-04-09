@@ -37,7 +37,6 @@ public class Manage {
 		try {
 			registerManager.setRegister(sender, password);
 		} catch (SecurityException | IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

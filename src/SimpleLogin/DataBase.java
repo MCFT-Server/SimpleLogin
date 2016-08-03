@@ -26,6 +26,7 @@ public class DataBase {
 		registerCommands();
 	}
 	public long getClientId(Player player) {
+		/*
 		Class<? extends Player> reflect =  player.getClass();
 		Field var;
 		long clientId = 0;
@@ -41,6 +42,8 @@ public class DataBase {
 			e.printStackTrace();
 		}
 		return clientId;
+		*/
+		return player.getClientId();
 	}
 	public void initMessage() {
 		plugin.saveResource("messages.yml");

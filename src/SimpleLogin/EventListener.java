@@ -208,12 +208,7 @@ class EventListener implements Listener{
 	public void onQuit(PlayerQuitEvent event) {
 		getManage().setLogin(event.getPlayer(), false);
 	}
-	@EventHandler
-	public void onItemHeld(PlayerItemHeldEvent event) {
-		if (!getManage().isLogin(event.getPlayer())) {
-			event.setCancelled();
-		}
-	}
+	
 	@EventHandler
 	public void onMove(PlayerMoveEvent event) {
 		Player player = event.getPlayer();

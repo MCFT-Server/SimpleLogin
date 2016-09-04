@@ -70,13 +70,16 @@ public class Manage {
 	public void setAllowSubAccount(boolean bool) {
 		getDataBase().config.set("allow-subaccount", bool);
 	}
-	@SuppressWarnings("unchecked")
 	public String getSubAccount(String player) {
+		return (player == null) ? null : getSubAccount(Server.getInstance().getPlayer(player));
+	}
+	@SuppressWarnings("unchecked")
+	public String getSubAccount(Player player) {
 		for (Object account : getDataBase().accountDB.values()) {
-			String cid = String.valueOf(getDataBase().getClientId(Server.getInstance().getPlayer(player)));
+			String cid = String.valueOf(getDataBase().getClientId(player));
 			if (((Map<String,String>) account).get("clientid").equals(cid)) {
 				String name = ((Map<String, String>)account).get("name");
-				if (name.equals(player.toLowerCase())) {
+				if (name.equals(player.getName().toLowerCase())) {
 					continue;
 				} else {
 					return name;
@@ -84,8 +87,5 @@ public class Manage {
 			}
 		}
 		return null;
-	}
-	public String getSubAccount(Player player) {
-		return getSubAccount(player.getName());
 	}
 }

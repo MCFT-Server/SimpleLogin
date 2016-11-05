@@ -243,7 +243,7 @@ class EventListener implements Listener{
 	@EventHandler
 	public void loginKick(PlayerKickEvent event) {
 		Player player = event.getPlayer();
-		if (event.getReason().equals("logged in from another location")) {
+		if (event.getReasonEnum().name().equals(PlayerKickEvent.Reason.NEW_CONNECTION.name())) {
 			if (getManage().isLogin(player)) {
 				event.setCancelled();
 			}

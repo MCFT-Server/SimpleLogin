@@ -1,6 +1,6 @@
 name: SimpleLogin
 main: SimpleLogin.Main
-version: "1.0.8"
+version: "1.0.9"
 author: maru
 api: ["1.0.0"]
 

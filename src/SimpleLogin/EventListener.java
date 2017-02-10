@@ -141,14 +141,6 @@ class EventListener implements Listener{
 		}
 	}
 	@EventHandler
-	public void onArmorChange(EntityArmorChangeEvent event) {
-		if (event.getEntity() instanceof Player) {
-			if (!getManage().isLogin((Player)event.getEntity())) {
-				event.setCancelled();
-			}
-		}
-	}
-	@EventHandler
 	public void onCraft(CraftItemEvent event) {
 		if (!getManage().isLogin(event.getPlayer())) {
 			event.setCancelled();
